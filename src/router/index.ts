@@ -1,7 +1,7 @@
 import express from 'express'
 
 const server = express()
-const routes = ['user']
+const routes = ['user','cadastro']
 
 routes.forEach((route) => {
     import(`./${route}`)

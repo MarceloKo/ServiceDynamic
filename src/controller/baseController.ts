@@ -1,17 +1,18 @@
 import { Request, Response } from "express";
 import BaseService from "../service/baseService";
 class BaseController{
-    public _baseService :BaseService;
+    public _baseService;
 
-    constructor(){
-   
-      this._baseService = new BaseService()
+    constructor(service:any){
+      this._baseService = service
     }
 
-    public index(req:Request, res:Response) {
-      // console.log(this._baseService)
-      console.log('blabla')
-      this._baseService.get(req, res);
+    public async index(req:Request, res:Response) {
+      return res.json({response: await this._baseService.get()}) 
+    }
+    
+    public async create(req:Request, res:Response) {
+      return res.json({response: await this._baseService.post(req.body)}) 
     }
 
 

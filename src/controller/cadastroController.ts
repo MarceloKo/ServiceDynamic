@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import cadastroModel from "../models/cadastroModel";
+import BaseService from "../service/baseService";
 import  baseService  from "../service/baseService";
 import BaseController from "./baseController";
 
@@ -7,14 +9,10 @@ class CadastroController extends BaseController {
    *
    */
   constructor() {
-    super();
+    super(new BaseService(cadastroModel));
     
   }
 
-  public create(req:Request, res:Response) {
-    return res.json({
-      Response: "Cadastrar unico"
-  });
-  }
+
 }
-export const cadastroController = new CadastroController();
+export default CadastroController;

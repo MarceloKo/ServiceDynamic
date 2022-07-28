@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { cadastroController } from "../controller/cadastroController";
+import  CadastroController  from "../controller/cadastroController";
 
 const router: Router = Router()
+const cadastroController = new CadastroController()
 
-router.get("/", cadastroController.index);
+router.get("/", (req,res)=> cadastroController.index(req,res));
+router.post("/", (req,res)=> cadastroController.create(req,res));
 
 export default router;
